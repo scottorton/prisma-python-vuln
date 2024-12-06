@@ -4,7 +4,6 @@ import requests
 import argparse
 import logging
 import gzip
-import pandas as pd
 from dotenv import load_dotenv
 
 logger = logging.getLogger()
@@ -37,7 +36,6 @@ def get_compute_url(base_url, token):
 
 def login_compute(base_url, access_key, secret_key):
     url = f"{base_url}/api/v1/authenticate"
-
     payload = json.dumps({"username": access_key, "password": secret_key})
     headers = {"content-type": "application/json; charset=UTF-8"}
     response = requests.post(url, headers=headers, data=payload)
@@ -52,7 +50,7 @@ def vuln_query(base_url, token):
     #Change the query you wish to recieve data from
     payload = json.dumps({"query": "vulnerability where asset.type IN ('Package', 'Host') AND severity IN ('high', 'critical')"})
     response = requests.post(url, headers=headers, data=payload, stream=True)
-    if response2.status_code == 200:
+    if response.status_code == 200:
         return response
     else:
         print('API Call Failed')
