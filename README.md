@@ -46,7 +46,7 @@ PRISMA_SECRET_KEY=<your_prisma_secret_key>
 
 Edit vuln-query-download.py first to create the query that matches your requirements. This is listed under def vuln_query.
 
-*To Do, create the script to use json files*
+-----*To Do: create the script to use json files*-----
 
 Run the script as follows:
 
